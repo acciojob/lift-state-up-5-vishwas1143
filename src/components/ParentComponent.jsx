@@ -1,19 +1,20 @@
 import React, { useState } from "react";
+
 import ChildComponent from "./ChildComponent";
 
 const ParentComponent = () => {
-  const [IsloggedIn, setIsloggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogIn = () => {
-    setIsloggedIn(true);
+    setIsLoggedIn(true);
   };
 
   return (
     <div>
-      {!IsloggedIn ? (
-        <ChildComponent handleLogIn={handleLogIn} />
+      {isLoggedIn ? (
+        <h2>Welcome! You are logged in.</h2>
       ) : (
-        <p>You are logged in</p>
+        <ChildComponent handleLogIn={handleLogIn} />
       )}
     </div>
   );

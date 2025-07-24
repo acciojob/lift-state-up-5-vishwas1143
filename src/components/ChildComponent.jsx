@@ -1,19 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ChildComponent = ({ handleLogIn }) => {
-  const logIn = (e) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onSubmit = (e) => {
     e.preventDefault();
+
     handleLogIn();
   };
+
   return (
-    <div>
-      <h1>Parent Component</h1>
-      <label>Username:</label>
-      <input type="text" />
-      <label>Password:</label>
-      <input type="password" />
-      <button onClick={logIn}>Login</button>
-    </div>
+    <form onSubmit={onSubmit}>
+      <h2>Login</h2>
+      <div>
+        <label>Username:</label>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </div>
+      <button type="submit">Login</button>
+    </form>
   );
 };
 
